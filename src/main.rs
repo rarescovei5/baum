@@ -1,14 +1,18 @@
 mod args;
 mod walk;
 
-use std::path::PathBuf;
-use colored::{Colorize, Color};
+use colored::{Color, Colorize};
 use humansize::DECIMAL;
+use std::path::PathBuf;
 use walk::{Counts, walk};
 
 fn main() {
     let (dir_str, config) = args::parse();
-    let mut counts = Counts { files: 0, dirs: 0, bytes: 0 };
+    let mut counts = Counts {
+        files: 0,
+        dirs: 0,
+        bytes: 0,
+    };
 
     // Convert parsed String into a PathBuf
     let dir_path = if dir_str.as_str() == "." && config.display_level == 2 {
@@ -30,12 +34,11 @@ fn main() {
         String::new()
     };
 
-
     let summary = format!(
-        "{}, {} | {}",
+        "{}, {} {}",
         &format!("{} directories", counts.dirs).color(Color::BrightBlue),
         &format!("{} files", counts.files).color(Color::BrightWhite),
-        &format!("{}", bytes).color(Color::BrightMagenta)
+        &format!("| {}", bytes).color(Color::BrightMagenta)
     );
 
     println!("\n{summary}");
