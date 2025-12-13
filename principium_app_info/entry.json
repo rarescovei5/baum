@@ -1,5 +1,6 @@
 {
   "name": "Baum",
   "description": "A lightweight Rust implementation of the classic Unix tree command. It is a tool that allows you to visualize the structure of your file system in a tree-like format. The usage is as follows: `baum [options] [path]`. For more information, please run `baum --help`.",
-  "author": "principium"
+  "author": "principium",
+  "category": "Utils"
 }
